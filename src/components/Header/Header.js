@@ -13,9 +13,11 @@ const Header = () => {
 
 const style = StyleSheet.create({
   container: {
-    height: 35,
+    height: 45,
     alignItems: 'center',
     justifyContent: 'center',
+    borderBottomColor: "#e5e5e5",
+    borderBottomWidth: 1,
   },
   header: {
     fontWeight: 'bold',

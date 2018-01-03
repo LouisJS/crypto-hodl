@@ -23,8 +23,10 @@ class CryptoContainer extends Component {
       <Card
         key={currency.id}
         symbol={currency.symbol}
+        name={currency.name}
         price_usd={currency.price_usd}
         percent_change_24h={currency.percent_change_24h}
+        percent_change_7d={currency.percent_change_7d}
       />
     );
 
@@ -39,7 +41,7 @@ class CryptoContainer extends Component {
     const { crypto } = this.props;
 
     return (
-      <View>
+      <View style={{flex: 1}}>
         {
           crypto.data &&
           this.renderList()
