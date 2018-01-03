@@ -1,1 +1,1 @@
-export const apiUrl = 'https://api.coinmarketcap.com';
+export const apiBaseURL = 'https://api.coinmarketcap.com';
