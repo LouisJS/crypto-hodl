@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 import fetchCrypto from '../actions/fetchCrypto';
+import Card from '../components/Card';
 
 class CryptoContainer extends Component {
   
@@ -10,12 +11,39 @@ class CryptoContainer extends Component {
     this.props.fetchCrypto();
   }
 
+  renderList = () => {
+    const { crypto } = this.props;
+
+    console.log(crypto);
+    if (crypto.data === null){
+      return ;
+    }
+
+    const list = crypto.data.map((currency) => 
+      <Card
+        key={currency.id}
+        symbol={currency.symbol}
+        price_usd={currency.price_usd}
+        percent_change_24h={currency.percent_change_24h}
+      />
+    );
+
+    return (
+      <ScrollView>
+        { list }
+      </ScrollView>
+    );
+  }
+
   render() {
+    const { crypto } = this.props;
+
     return (
       <View>
-        <Text>
-          Container
-        </Text>
+        {
+          crypto.data &&
+          this.renderList()
+        }
       </View>
     );
   }
